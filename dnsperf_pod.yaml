@@ -14,8 +14,7 @@ spec:
         app: dnsperf
     spec:
       containers:
-      - image: wsartifactory.ws.vici.verizon.com/ws_platform_docker/f5/dnsperf2:latest
-        command:
+      - image: mrlesmithjr/dnsperf
           - sleep
           - "1d"
         imagePullPolicy: IfNotPresent
