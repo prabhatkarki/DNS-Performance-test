@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsperf
+  namespace: spk-app-01
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dnsperf
+  template:
+    metadata:
+      labels:
+        app: dnsperf
+    spec:
+      containers:
+      - image: wsartifactory.ws.vici.verizon.com/ws_platform_docker/f5/dnsperf2:latest
+        command:
+          - sleep
+          - "1d"
+        imagePullPolicy: IfNotPresent
+        name: dnsperf
+        securityContext:
+          privileged: true
+        ports:
+        - containerPort: 53
+          protocol: UDP
